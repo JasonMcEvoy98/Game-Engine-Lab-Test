@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Lights : MonoBehaviour
+    ////***NB light and car spawn (new name)
 {
 
     public GameObject prefab;
@@ -21,11 +22,19 @@ public class Lights : MonoBehaviour
             Quaternion rot = Quaternion.Euler(0, angleDegrees, 0);
             Instantiate(prefab, pos, rot);
         }
+        CreateCar();
     }
 
  
     void Update()
     {
         
+    }
+    void CreateCar()
+    {
+        GameObject carInstance = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        carInstance.transform.localScale = new Vector3(1, 1, 1.5f);
+        carInstance.AddComponent<CarMove>();
+        carInstance.name = "Car";
     }
 }
