@@ -5,13 +5,14 @@ using UnityEngine;
 public class Lights : MonoBehaviour
     ////***NB light and car spawn (new name)
 {
-
+   
     public GameObject prefab;
     public int numberOfObjects = 20;
     public float radius = 5f;
 
     void Start()
     {
+        
         for (int i = 0; i < numberOfObjects; i++)
         {
             float angle = i * Mathf.PI * 2 / numberOfObjects;
@@ -25,16 +26,14 @@ public class Lights : MonoBehaviour
         CreateCar();
     }
 
+
  
-    void Update()
-    {
-        
-    }
+    
     void CreateCar()
     {
         GameObject carInstance = GameObject.CreatePrimitive(PrimitiveType.Cube);
         carInstance.transform.localScale = new Vector3(1, 1, 1.5f);
-        carInstance.AddComponent<CarMove>();
+       // carInstance.AddComponent<CarMove>();
         carInstance.name = "Car";
     }
 }

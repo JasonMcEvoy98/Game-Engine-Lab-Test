@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class LightFlash : MonoBehaviour
 {
-    private LightColours myColour;
-    public Renderer colourRenderer;
     private enum LightColours
     {
-     Red, Green, Yellow
+        Green, Yellow, Red
     }
-
+    private LightColours myColour;
+    public Renderer colourRenderer;
+    
     private void Start()
     {
         myColour = (LightColours)Random.Range(0, 3);
@@ -30,6 +30,7 @@ public class LightFlash : MonoBehaviour
 
     IEnumerator ColourChange()
     {
+        
         if (myColour == LightColours.Yellow)
         {  yield return new WaitForSeconds(4); }
         else

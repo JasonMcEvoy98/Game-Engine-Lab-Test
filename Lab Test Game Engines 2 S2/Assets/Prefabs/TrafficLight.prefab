@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d409c13b35b6a2e4fb75e41cd20712db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colourRenderer: {fileID: 0}
+  colourRenderer: {fileID: 7530923853604583931}
 --- !u!108 &-5312976983711260966
 Light:
   m_ObjectHideFlags: 0
