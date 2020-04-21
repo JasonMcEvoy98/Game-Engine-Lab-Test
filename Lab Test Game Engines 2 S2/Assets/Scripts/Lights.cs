@@ -26,14 +26,11 @@ public class Lights : MonoBehaviour
         CreateCar();
     }
 
-
- 
-    
     void CreateCar()
     {
         GameObject carInstance = GameObject.CreatePrimitive(PrimitiveType.Cube);
         carInstance.transform.localScale = new Vector3(1, 1, 1.5f);
-       // carInstance.AddComponent<CarMove>();
+        carInstance.AddComponent<CarMove>();
         carInstance.name = "Car";
     }
 }
