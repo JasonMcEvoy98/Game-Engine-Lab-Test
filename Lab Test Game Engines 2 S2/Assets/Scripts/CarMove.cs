@@ -4,51 +4,43 @@ using UnityEngine;
 
 public class CarMove : MonoBehaviour
 {
-    private Renderer _colourRenderer;
-
-    private Lights mainScript;
-    private GameObject _target;
+    private Renderer cubeColour;
     public Renderer lightColour;
-
+    private Lights mainScript;
+    private GameObject lookFor;
     private Vector3 velocity;
-    private float maxVelocity = 3;
-    private float maxForce = 1;
+    private float maxVelocity = 2f;
+    private float maxForce = 1f;
 
     void Start()
     {
-        _colourRenderer = GetComponent<MeshRenderer>();
-        _colourRenderer.material.color = Color.magenta;
+        cubeColour = GetComponent<MeshRenderer>();
+        cubeColour.material.color = Color.magenta;
         mainScript = FindObjectOfType<Lights>();
         velocity = Vector3.zero;
-        TargetSelect();
+        TargetChoose();
     }
 
-    void Update()
-    {
+    void Update() {
         if (lightColour.material.color != Color.green ||
-            (Vector3.Distance(this.transform.position, _target.transform.position) <= 0.2))
+            (Vector3.Distance(this.transform.position, lookFor.transform.position) <= 0.2))
         {
-            TargetSelect();
+            TargetChoose();
         }
-        MoveToTarget();
+        MoveToTarget(); }
 
-
-    }
-
-    void TargetSelect()
+    void TargetChoose()
     {
-       // _target = mainScript.prefab[Random.Range(0, mainScript.prefab.length)];
-        lightColour = _target.GetComponent<Renderer>();
+        // lookFor = mainScript.prefab[Random.Range(0, mainScript.prefab.length)];
+        lightColour = lookFor.GetComponent<Renderer>();
     }
 
     void MoveToTarget()
     {
-        var desiredVelocity = _target.transform.position - transform.position;
+        var desiredVelocity = lookFor.transform.position - transform.position;
         desiredVelocity = desiredVelocity.normalized * maxVelocity;
-
         var steering = desiredVelocity - velocity;
         steering = Vector3.ClampMagnitude(steering, maxForce);
-
         velocity = Vector3.ClampMagnitude(velocity + steering, maxVelocity);
         transform.position += velocity * Time.deltaTime;
         transform.forward = velocity.normalized;
